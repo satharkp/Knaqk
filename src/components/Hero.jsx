@@ -115,17 +115,6 @@ const Hero = () => {
           >
             See Our Work
           </motion.button>
-
-          <div className="flex gap-8 text-[var(--color-text-secondary)] font-brand text-sm tracking-widest uppercase">
-            <div className="flex flex-col items-center">
-              <span className="text-[var(--color-brand-orange)] text-2xl font-bold">100+</span>
-              <span>Projects</span>
-            </div>
-            <div className="flex flex-col items-center border-l border-[var(--color-border-primary)] pl-8">
-              <span className="text-[var(--color-brand-orange)] text-2xl font-bold">15+</span>
-              <span>Experts</span>
-            </div>
-          </div>
         </div>
       </motion.div>
 

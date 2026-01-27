@@ -30,15 +30,14 @@ const Navbar = ({ theme, toggleTheme }) => {
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="text-3xl font-brand font-bold tracking-wider flex items-center gap-1 cursor-pointer"
           >
             <span className="text-[var(--color-text-primary)]">KNA</span>
-            <span className="text-[var(--color-brand-orange)] relative">
+            <span className="text-[var(--color-brand-orange)]">
               Q
-              <span className="absolute inset-0 bg-[var(--color-brand-orange)] blur-md opacity-50 animate-pulse"></span>
             </span>
             <span className="text-[var(--color-text-primary)]">K</span>
           </motion.div>
@@ -72,21 +71,26 @@ const Navbar = ({ theme, toggleTheme }) => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
+              initial={{ opacity: 0, scaleY: 0 }}
+              animate={{ opacity: 1, scaleY: 1 }}
+              exit={{ opacity: 0, scaleY: 0 }}
+              style={{ originY: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
               className="md:hidden bg-[var(--color-bg-secondary)] backdrop-blur-xl border-t border-[var(--color-border-primary)]"
             >
               <div className="flex flex-col items-center py-8 gap-6">
-                {navLinks.map((link) => (
-                  <a
+                {navLinks.map((link, index) => (
+                  <motion.a
                     key={link.name}
                     href={link.href}
                     className="text-2xl text-[var(--color-text-primary)] hover:text-[var(--color-brand-orange)] font-brand font-bold"
                     onClick={() => setIsOpen(false)}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.08 }}
                   >
                     {link.name}
-                  </a>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>

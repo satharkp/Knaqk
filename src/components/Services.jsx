@@ -36,7 +36,11 @@ const Services = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-[var(--color-bg-primary)] transition-colors duration-500">
+    <section
+      id="services"
+      ref={targetRef}
+      className="relative h-[300vh] bg-[var(--color-bg-primary)] transition-colors duration-500"
+    >
       <div className="sticky top-0 h-screen flex items-center overflow-hidden relative">
 
         {/* Section Title */}

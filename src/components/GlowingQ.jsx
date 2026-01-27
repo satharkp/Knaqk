@@ -8,11 +8,11 @@ const GlowingQ = ({ className }) => {
         className="absolute inset-0 bg-[var(--color-brand-orange)] rounded-full blur-[80px]"
         initial={{ opacity: 0 }}
         animate={{
-          opacity: [0.1, 0.3, 0.1, 0.4, 0.2],
-          scale: [0.8, 1.2, 0.9, 1.1, 0.8]
+          opacity: [0.15, 0.25, 0.15],
+          scale: [0.95, 1.05, 0.95]
         }}
         transition={{
-          duration: 4,
+          duration: 6,
           repeat: Infinity,
           ease: "easeInOut"
         }}
@@ -49,12 +49,14 @@ const GlowingQ = ({ className }) => {
         <motion.path
           d="M50 15 C 30 15, 15 30, 15 50 C 15 65, 25 78, 38 83 L 38 92 L 62 92 L 62 83 C 75 78, 85 65, 85 50 C 85 30, 70 15, 50 15 Z"
           stroke="var(--color-brand-orange)"
-          strokeWidth="3"
+          strokeWidth="2.2"
           strokeLinecap="round"
           fill="transparent"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 2.4, ease: "easeInOut" }}
+          vectorEffect="non-scaling-stroke"
+          shapeRendering="geometricPrecision"
         />
 
         {/* Glass Reflection/Highlight for 3D effect */}
@@ -66,6 +68,20 @@ const GlowingQ = ({ className }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           transition={{ delay: 1, duration: 1 }}
+          vectorEffect="non-scaling-stroke"
+          shapeRendering="geometricPrecision"
+        />
+
+        <motion.path
+          d="M45 22 C 38 35, 38 55, 45 72"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeOpacity="0.15"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ delay: 1.2, duration: 1.5 }}
         />
 
         {/* Base Details (Threads) */}
@@ -75,24 +91,24 @@ const GlowingQ = ({ className }) => {
         {/* The Filament - Detailed Coil Look */}
         {/* Core Hot Wire */}
         <motion.path
-          d="M35 45 Q 50 75 65 45"
+          d="M34 52 Q 50 70 66 52"
           stroke="#FFF"
-          strokeWidth="1"
+          strokeWidth="1.4"
           strokeLinecap="round"
           initial={{ opacity: 0 }}
-          animate={{ opacity: [0.5, 1, 0.5, 1, 0.8] }}
-          transition={{ duration: 0.1, repeat: Infinity }}
+          animate={{ opacity: [0.6, 0.9, 0.6] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
         />
         {/* Outer Glow Wire */}
         <motion.path
-          d="M35 45 Q 50 75 65 45"
+          d="M34 52 Q 50 70 66 52"
           stroke="#FF9F1C"
-          strokeWidth="4"
+          strokeWidth="3"
           strokeLinecap="round"
-          style={{ filter: "blur(2px)" }}
+          style={{ filter: "blur(3px)" }}
           initial={{ opacity: 0 }}
-          animate={{ opacity: [0.4, 0.8, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={{ opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
         />
 
 
