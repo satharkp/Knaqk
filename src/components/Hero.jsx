@@ -3,6 +3,46 @@ import GlowingQ from './GlowingQ';
 import { useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
+const Spark = ({ delay }) => {
+  const randomX = Math.random() * 100;
+  const randomY = Math.random() * 100;
+  const size = Math.random() * 3 + 1;
+
+  return (
+    <motion.div
+      className="absolute rounded-full bg-[var(--color-brand-orange)] opacity-20 pointer-events-none blur-[1px]"
+      style={{
+        left: `${randomX}%`,
+        top: `${randomY}%`,
+        width: size,
+        height: size,
+      }}
+      animate={{
+        y: [0, -100, 0],
+        x: [0, Math.random() * 40 - 20, 0],
+        opacity: [0.1, 0.4, 0.1],
+        scale: [1, 1.5, 1],
+      }}
+      transition={{
+        duration: Math.random() * 10 + 10,
+        repeat: Infinity,
+        delay: delay,
+        ease: "easeInOut",
+      }}
+    />
+  );
+};
+
+const SparkField = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {[...Array(30)].map((_, i) => (
+        <Spark key={i} delay={i * 0.2} />
+      ))}
+    </div>
+  );
+};
+
 const Hero = () => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start end", "end start"] });
@@ -16,6 +56,7 @@ const Hero = () => {
       ref={targetRef}
       className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--color-bg-primary)] transition-colors duration-500"
     >
+      <SparkField />
       {/* Background Texture/Noise could go here */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,159,28,0.05)_0%,var(--color-bg-primary)_70%)] pointer-events-none"></div>
 
