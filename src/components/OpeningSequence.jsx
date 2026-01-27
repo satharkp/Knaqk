@@ -12,7 +12,7 @@ const OpeningSequence = ({ onComplete }) => {
     const doneTimer = setTimeout(() => {
       setStage('done');
       onComplete();
-    }, 5000); // 4000ms (start) + 800ms (duration) + buffer
+    }, 5900); // 4000ms (start) + 1800ms (duration) + 100ms buffer
 
     return () => {
       clearTimeout(flickerTimer);
@@ -27,18 +27,18 @@ const OpeningSequence = ({ onComplete }) => {
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden"
           exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8 }}
         >
           {/* Background Ambient Glow */}
           <motion.div
             className="absolute inset-0 bg-[var(--color-brand-orange)]"
             initial={{ opacity: 0 }}
             animate={{
-              // Softer flicker: min 0.1, max 0.4. Avoids complete blackouts for "warm up" feel.
+              // Softer flicker
               opacity: stage === 'flicker' ? [0, 0.3, 0.1, 0.4, 0.2] : stage === 'expand' ? 1 : 0
             }}
             transition={{
-              duration: stage === 'flicker' ? 2 : 0.8, // Faster fill for "expand"
+              duration: stage === 'flicker' ? 2 : 1.8, // Reverted to slower fill
               repeat: stage === 'flicker' ? Infinity : 0,
               repeatType: "reverse",
               ease: "easeInOut"
@@ -49,12 +49,12 @@ const OpeningSequence = ({ onComplete }) => {
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{
-              scale: stage === 'expand' ? 50 : 1,
+              scale: stage === 'expand' ? 60 : 1, // Increased scale slightly for total coverage
               opacity: stage === 'expand' ? 0 : 1
             }}
             transition={{
-              duration: stage === 'expand' ? 0.8 : 2, // Faster expansion
-              ease: "easeIn" // Sharp acceleration for "pop" feel
+              duration: stage === 'expand' ? 1.8 : 2, // Reverted expansion duration
+              ease: "easeInOut" // Smoother premium feel
             }}
             className="relative z-10"
           >

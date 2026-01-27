@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Services from './components/Services';
 import Hero from './components/Hero';
@@ -15,7 +16,11 @@ const App = () => {
       )}
 
       {showContent && (
-        <>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
           <Navbar />
           <Hero />
           <Services />
@@ -24,7 +29,7 @@ const App = () => {
             <h2 className="text-4xl font-brand text-gray-500">More Work Coming Soon...</h2>
           </section>
           <Footer />
-        </>
+        </motion.div>
       )}
     </div>
   );
