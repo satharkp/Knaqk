@@ -12,7 +12,7 @@ const OpeningSequence = ({ onComplete }) => {
     const doneTimer = setTimeout(() => {
       setStage('done');
       onComplete();
-    }, 5900); // 4000ms (start) + 1800ms (duration) + 100ms buffer
+    }, 6000); // 4000ms (start) + 1800ms (duration) + 200ms buffer for complete stillness
 
     return () => {
       clearTimeout(flickerTimer);
