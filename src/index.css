@@ -45,9 +45,6 @@
   }
 }
 
---animate-flicker: flicker 4s infinite;
-}
-
 .light {
   --color-bg-primary: #F5F5F5;
   --color-bg-secondary: #FFFFFF;
@@ -59,46 +56,22 @@
 @layer base {
   html {
     background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
+    transition: background-color 0.5s ease;
+  }
+
+  body {
     font-family: var(--font-inter);
-    scroll-behavior: smooth;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    color: var(--color-text-primary);
+    transition: color 0.5s ease;
   }
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+@layer utilities {
+  .font-brand {
     font-family: var(--font-brand);
-    font-weight: 700;
   }
-}
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-brand-dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-orange);
-}
-
-/* Global utility for glow effects */
-.glow-text {
-  text-shadow: 0 0 10px var(--color-brand-orange), 0 0 20px var(--color-brand-orange);
-}
-
-.glow-box {
-  box-shadow: 0 0 15px rgba(255, 159, 28, 0.3);
+  .font-inter {
+    font-family: var(--font-inter);
+  }
 }
