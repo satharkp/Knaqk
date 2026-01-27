@@ -25,7 +25,7 @@ const App = () => {
   };
 
   return (
-    <div className="bg-[var(--color-brand-dark)] min-h-screen text-white font-inter selection:bg-[var(--color-brand-orange)] selection:text-black">
+    <div className="relative bg-[var(--color-brand-dark)] min-h-screen text-white font-inter selection:bg-[var(--color-brand-orange)] selection:text-black">
       {!showContent && (
         <OpeningSequence onComplete={() => setShowContent(true)} />
       )}
