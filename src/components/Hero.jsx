@@ -6,11 +6,11 @@ import { useRef } from 'react';
 const Spark = ({ delay }) => {
   const randomX = Math.random() * 100;
   const randomY = Math.random() * 100;
-  const size = Math.random() * 3 + 1;
+  const size = Math.random() * 4 + 1; // Slightly larger range
 
   return (
     <motion.div
-      className="absolute rounded-full bg-[var(--color-brand-orange)] opacity-20 pointer-events-none blur-[1px]"
+      className="absolute rounded-full bg-[var(--color-brand-orange)] pointer-events-none blur-[1px] shadow-[0_0_10px_var(--color-brand-orange)]"
       style={{
         left: `${randomX}%`,
         top: `${randomY}%`,
@@ -18,13 +18,13 @@ const Spark = ({ delay }) => {
         height: size,
       }}
       animate={{
-        y: [0, -100, 0],
-        x: [0, Math.random() * 40 - 20, 0],
-        opacity: [0.1, 0.4, 0.1],
-        scale: [1, 1.5, 1],
+        y: [0, -120, 0],
+        x: [0, Math.random() * 60 - 30, 0],
+        opacity: [0.3, 0.8, 0.3], // Higher contrast opacity
+        scale: [1, 2, 1], // More dynamic scaling
       }}
       transition={{
-        duration: Math.random() * 10 + 10,
+        duration: Math.random() * 10 + 8,
         repeat: Infinity,
         delay: delay,
         ease: "easeInOut",
@@ -36,8 +36,8 @@ const Spark = ({ delay }) => {
 const SparkField = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(30)].map((_, i) => (
-        <Spark key={i} delay={i * 0.2} />
+      {[...Array(60)].map((_, i) => (
+        <Spark key={i} delay={i * 0.1} />
       ))}
     </div>
   );
