@@ -35,6 +35,7 @@ const App = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
+          className="relative"
         >
           <Navbar theme={theme} toggleTheme={toggleTheme} />
           <Hero />
@@ -44,6 +45,7 @@ const App = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="relative"
           >
             <Services />
 
