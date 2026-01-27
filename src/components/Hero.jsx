@@ -7,8 +7,8 @@ const Hero = () => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start end", "end start"] });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]); // Fade out quicker on scroll
+  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.9]);
 
   return (
     <section

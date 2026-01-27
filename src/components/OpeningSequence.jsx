@@ -49,12 +49,12 @@ const OpeningSequence = ({ onComplete }) => {
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{
-              scale: stage === 'expand' ? 60 : 1, // Increased scale slightly for total coverage
-              opacity: stage === 'expand' ? 0 : 1
+              scale: stage === 'expand' ? 100 : 1, // High scale for total mobile coverage
+              opacity: 1 // Keep solid yellow during expansion to cover mounting lag
             }}
             transition={{
-              duration: stage === 'expand' ? 1.8 : 2, // Reverted expansion duration
-              ease: "easeInOut" // Smoother premium feel
+              duration: stage === 'expand' ? 1.8 : 2,
+              ease: "easeInOut"
             }}
             className="relative z-10"
           >
