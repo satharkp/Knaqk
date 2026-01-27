@@ -8,44 +8,88 @@ const OpeningSequence = ({ onComplete }) => {
   const bgRef = useRef();
   const qRef = useRef();
 
+  useEffect(() => {
+    const images = [
+      "/hero.jpg",
+      "/logo.svg"
+    ];
+
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   useGSAP(() => {
     const tl = gsap.timeline({
+      defaults: { ease: "power2.out" },
       onComplete: onComplete
     });
 
-    // 1. Initial delay
-    tl.set(bgRef.current, { opacity: 0 });
-    tl.set(qRef.current, { scale: 0.5, opacity: 0 });
-
-    // 2. Flicker Stage (4 seconds total range)
-    tl.to(qRef.current, { opacity: 1, duration: 0.5 }, 0.5);
-
-    // Create organic flicker
-    const flickerValues = [0.3, 0.1, 0.4, 0.05, 0.35, 0.1, 0.4, 0.2];
-    flickerValues.forEach((val, i) => {
-      tl.to(bgRef.current, {
-        opacity: val,
-        duration: 0.15,
-        ease: "none"
-      }, 0.5 + (i * 0.4));
+    // Initial state
+    tl.set(bgRef.current, {
+      opacity: 0,
+      willChange: "opacity"
     });
 
-    // 3. Expand Stage (Starts at 4s)
+    tl.set(qRef.current, {
+      scale: 0.6,
+      opacity: 0,
+      willChange: "transform, opacity",
+      transformOrigin: "50% 50%"
+    });
+
+    // Smooth fade-in of Q
+    tl.to(qRef.current, {
+      opacity: 1,
+      duration: 0.6
+    }, 0.4);
+
+    // Organic background flicker (soft)
+    tl.to(bgRef.current, {
+      opacity: 0.25,
+      duration: 0.4,
+      ease: "sine.inOut"
+    }, 0.6);
+
+    tl.to(bgRef.current, {
+      opacity: 0.1,
+      duration: 0.3,
+      ease: "sine.inOut"
+    });
+
+    tl.to(bgRef.current, {
+      opacity: 0.35,
+      duration: 0.45,
+      ease: "sine.inOut"
+    });
+
+    // Calm before expansion
+    tl.to(bgRef.current, {
+      opacity: 0.5,
+      duration: 0.6
+    });
+
+    // Cinematic expansion (NO extreme scaling)
     tl.to(bgRef.current, {
       opacity: 1,
-      duration: 1.8,
+      duration: 1.4,
       ease: "power3.inOut"
-    }, 4);
+    }, "+=0.2");
 
     tl.to(qRef.current, {
-      scale: 100,
-      opacity: 1,
-      duration: 1.8,
-      ease: "power3.inOut"
-    }, 4);
+      scale: 35,
+      duration: 1.9,
+      ease: "power4.in"
+    }, "<");
 
-    // 4. Buffer for unmount
-    tl.to({}, { duration: 0.2 });
+    tl.to(qRef.current, {
+      filter: "blur(6px)",
+      duration: 0.25,
+      ease: "power2.out"
+    }, "-=0.25");
+
+    // Immediate exit — no pause
 
   }, { scope: container });
 
