@@ -45,7 +45,7 @@ const Services = () => {
           <div className="w-20 h-1 bg-[var(--color-brand-orange)]"></div>
         </div>
 
-        <motion.div style={{ x }} className="flex gap-6 md:gap-10 px-6 md:px-20">
+        <motion.div style={{ x }} className="relative flex gap-6 md:gap-10 px-6 md:px-20">
           {services.map((service, index) => (
             <div
               key={index}

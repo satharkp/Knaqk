@@ -64,7 +64,7 @@ const Hero = () => {
 
       <motion.div
         style={{ opacity: scrollOpacity, scale: scrollScale }}
-        className="z-10 flex flex-col items-center text-center p-4 max-w-5xl"
+        className="z-10 flex flex-col items-center text-center p-4 max-w-5xl relative"
       >
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
