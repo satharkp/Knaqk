@@ -12,7 +12,7 @@ const OpeningSequence = ({ onComplete }) => {
     const doneTimer = setTimeout(() => {
       setStage('done');
       onComplete();
-    }, 6200); // 4000ms + 2000ms (expand duration) + buffer
+    }, 5000); // 4000ms (start) + 800ms (duration) + buffer
 
     return () => {
       clearTimeout(flickerTimer);
@@ -38,7 +38,7 @@ const OpeningSequence = ({ onComplete }) => {
               opacity: stage === 'flicker' ? [0, 0.3, 0.1, 0.4, 0.2] : stage === 'expand' ? 1 : 0
             }}
             transition={{
-              duration: stage === 'flicker' ? 2 : 1.5, // Slower, more organic flicker
+              duration: stage === 'flicker' ? 2 : 0.8, // Faster fill for "expand"
               repeat: stage === 'flicker' ? Infinity : 0,
               repeatType: "reverse",
               ease: "easeInOut"
@@ -53,8 +53,8 @@ const OpeningSequence = ({ onComplete }) => {
               opacity: stage === 'expand' ? 0 : 1
             }}
             transition={{
-              duration: stage === 'expand' ? 2 : 2, // Slower expansion for less "glitchy" feel
-              ease: "easeInOut" // Smoother acceleration/deceleration
+              duration: stage === 'expand' ? 0.8 : 2, // Faster expansion
+              ease: "easeIn" // Sharp acceleration for "pop" feel
             }}
             className="relative z-10"
           >
