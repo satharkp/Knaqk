@@ -12,7 +12,7 @@ const OpeningSequence = ({ onComplete }) => {
     const doneTimer = setTimeout(() => {
       setStage('done');
       onComplete();
-    }, 4800);
+    }, 6200); // 4000ms + 2000ms (expand duration) + buffer
 
     return () => {
       clearTimeout(flickerTimer);
@@ -34,9 +34,15 @@ const OpeningSequence = ({ onComplete }) => {
             className="absolute inset-0 bg-[var(--color-brand-orange)]"
             initial={{ opacity: 0 }}
             animate={{
-              opacity: stage === 'flicker' ? [0, 0.05, 0, 0.1, 0.02] : stage === 'expand' ? 1 : 0
+              // Softer flicker: min 0.1, max 0.4. Avoids complete blackouts for "warm up" feel.
+              opacity: stage === 'flicker' ? [0, 0.3, 0.1, 0.4, 0.2] : stage === 'expand' ? 1 : 0
             }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{
+              duration: stage === 'flicker' ? 2 : 1.5, // Slower, more organic flicker
+              repeat: stage === 'flicker' ? Infinity : 0,
+              repeatType: "reverse",
+              ease: "easeInOut"
+            }}
           />
 
           {/* The Glowing Q Centered */}
@@ -47,22 +53,12 @@ const OpeningSequence = ({ onComplete }) => {
               opacity: stage === 'expand' ? 0 : 1
             }}
             transition={{
-              duration: stage === 'expand' ? 0.8 : 2,
-              ease: "easeIn"
+              duration: stage === 'expand' ? 2 : 2, // Slower expansion for less "glitchy" feel
+              ease: "easeInOut" // Smoother acceleration/deceleration
             }}
             className="relative z-10"
           >
             <GlowingQ className="w-32 h-32 md:w-64 md:h-64" />
-          </motion.div>
-
-          {/* Text Reveal aimed to happen just before expand */}
-          <motion.div
-            className="absolute bottom-20 text-white font-brand text-xl tracking-[0.5em] uppercase"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: stage === 'flicker' ? [0, 1, 0.5, 1] : 0 }}
-            transition={{ duration: 2 }}
-          >
-            Turning on the light...
           </motion.div>
 
         </motion.div>
