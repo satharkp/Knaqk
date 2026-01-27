@@ -37,7 +37,7 @@ const Services = () => {
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-[var(--color-bg-primary)] transition-colors duration-500">
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden relative">
 
         {/* Section Title */}
         <div className="absolute top-6 left-6 md:top-10 md:left-10 z-10">
