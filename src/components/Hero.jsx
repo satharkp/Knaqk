@@ -11,7 +11,6 @@ const SparkField = () => {
     const sparks = fieldRef.current.querySelectorAll('.gsap-spark');
 
     sparks.forEach((spark) => {
-      // Set initial random position
       gsap.set(spark, {
         x: gsap.utils.random(0, window.innerWidth),
         y: gsap.utils.random(0, window.innerHeight),
@@ -19,7 +18,6 @@ const SparkField = () => {
         scale: gsap.utils.random(1, 1.5),
       });
 
-      // Continuous floating animation
       gsap.to(spark, {
         y: "-=150",
         x: `+=${gsap.utils.random(-50, 50)}`,
@@ -48,45 +46,11 @@ const SparkField = () => {
 };
 
 const Hero = () => {
-  const container = useRef();
-  const titleRef = useRef();
-  const subRef = useRef();
-  const descRef = useRef();
-  const ctaRef = useRef();
-  const statsRef = useRef();
-  const qRef = useRef();
   const targetRef = useRef(null);
 
-  // Framer Motion scroll handling (kept for ease of use with scroll values)
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start end", "end start"] });
   const scrollOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const scrollScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.9]);
-
-  useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-    tl.from(qRef.current, { scale: 0, opacity: 0, duration: 1.5 }, 0.2)
-      .from(titleRef.current, { y: 60, opacity: 0, duration: 1 }, "-=0.8")
-      .from(subRef.current, { y: 30, opacity: 0, duration: 1 }, "-=0.7")
-      .from(descRef.current, { opacity: 0, y: 20, duration: 1 }, "-=0.6")
-      .from(ctaRef.current, { scale: 0.8, opacity: 0, duration: 0.8 }, "-=0.5")
-      .from(statsRef.current.children, {
-        opacity: 0,
-        y: 20,
-        stagger: 0.2,
-        duration: 0.8
-      }, "-=0.4");
-
-    // Infinite floating for the Q bulb
-    gsap.to(qRef.current, {
-      y: "+=15",
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-
-  }, { scope: container });
 
   return (
     <section
@@ -99,49 +63,60 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,159,28,0.05)_0%,var(--color-bg-primary)_70%)] pointer-events-none"></div>
 
       <motion.div
-        ref={container}
         style={{ opacity: scrollOpacity, scale: scrollScale }}
         className="z-10 flex flex-col items-center text-center p-4 max-w-5xl"
       >
-        {/* The "Bulb" Q */}
-        <div ref={qRef} className="mb-8">
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="mb-8"
+        >
           <GlowingQ className="w-32 h-32 md:w-48 md:h-48" />
-        </div>
+        </motion.div>
 
-        {/* Staggered Text Reveal */}
-        <h1
-          ref={titleRef}
+        <motion.h1
           className="text-5xl md:text-9xl font-brand font-bold text-[var(--color-text-primary)] tracking-tighter mb-4"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
         >
           KNAQK
-        </h1>
+        </motion.h1>
 
-        <p
-          ref={subRef}
+        <motion.p
           className="text-xl md:text-3xl text-[var(--color-text-secondary)] font-inter tracking-[0.2em] uppercase mb-8"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
         >
           Illuminating <span className="text-[var(--color-brand-orange)] font-bold">Connections</span>
-        </p>
+        </motion.p>
 
-        <div
-          ref={descRef}
+        <motion.div
           className="max-w-2xl text-[var(--color-text-secondary)] font-inter text-lg leading-relaxed mb-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 1 }}
         >
           We bridge the gap between complex technology and human experience.
           KNAQK isn't just a studio; it's the spark that turns your vision into a digital empire.
-        </div>
+        </motion.div>
 
-        {/* CTA & Features */}
         <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center">
-          <button
-            ref={ctaRef}
+          <motion.button
             className="px-10 py-4 bg-[var(--color-brand-orange)] text-black font-bold text-xl rounded-full hover:bg-white hover:shadow-[0_0_40px_rgba(255,159,28,0.5)] transition-all duration-300"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('work').scrollIntoView({ behavior: 'smooth' })}
           >
             See Our Work
-          </button>
+          </motion.button>
 
-          <div ref={statsRef} className="flex gap-8 text-[var(--color-text-secondary)] font-brand text-sm tracking-widest uppercase">
+          <div className="flex gap-8 text-[var(--color-text-secondary)] font-brand text-sm tracking-widest uppercase">
             <div className="flex flex-col items-center">
               <span className="text-[var(--color-brand-orange)] text-2xl font-bold">100+</span>
               <span>Projects</span>
@@ -154,7 +129,6 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 overflow-hidden h-16">
         <div className="w-[1px] h-full bg-gradient-to-b from-[var(--color-brand-orange)] to-transparent opacity-50 animate-bounce" />
       </div>
