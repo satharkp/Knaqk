@@ -36,12 +36,12 @@ const Services = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-neutral-950">
+    <section ref={targetRef} className="relative h-[300vh] bg-[var(--color-bg-primary)] transition-colors duration-500">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
 
         {/* Section Title */}
         <div className="absolute top-6 left-6 md:top-10 md:left-10 z-10">
-          <h2 className="text-4xl md:text-6xl font-brand font-bold text-white mb-2">Our Services</h2>
+          <h2 className="text-4xl md:text-6xl font-brand font-bold text-[var(--color-text-primary)] mb-2">Our Services</h2>
           <div className="w-20 h-1 bg-[var(--color-brand-orange)]"></div>
         </div>
 
@@ -49,7 +49,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative w-[85vw] md:w-[600px] h-[50vh] md:h-[60vh] bg-black/50 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-sm hover:border-[var(--color-brand-orange)] transition-colors duration-500 flex flex-col justify-center items-center p-6 md:p-8 text-center"
+              className="group relative w-[85vw] md:w-[600px] h-[50vh] md:h-[60vh] bg-[var(--color-bg-secondary)] border border-[var(--color-border-primary)] rounded-3xl overflow-hidden backdrop-blur-sm hover:border-[var(--color-brand-orange)] transition-all duration-500 flex flex-col justify-center items-center p-6 md:p-8 text-center"
             >
               {/* Glow Effect on Hover */}
               <div className="absolute inset-0 bg-radial-gradient from-[var(--color-brand-orange)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none blur-2xl"></div>
@@ -60,11 +60,11 @@ const Services = () => {
                 {service.icon}
               </motion.div>
 
-              <h3 className="text-3xl font-brand font-bold text-white mb-4 group-hover:text-[var(--color-brand-orange)] transition-colors">
+              <h3 className="text-3xl font-brand font-bold text-[var(--color-text-primary)] mb-4 group-hover:text-[var(--color-brand-orange)] transition-colors">
                 {service.title}
               </h3>
 
-              <p className="text-gray-400 font-inter text-lg leading-relaxed max-w-md">
+              <p className="text-[var(--color-text-secondary)] font-inter text-lg leading-relaxed max-w-md">
                 {service.description}
               </p>
 

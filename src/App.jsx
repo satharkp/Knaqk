@@ -9,6 +9,21 @@ import OpeningSequence from './components/OpeningSequence';
 const App = () => {
   const [showContent, setShowContent] = useState(false);
   const [showDelayed, setShowDelayed] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    if (theme === 'light') {
+      root.classList.add('light');
+    } else {
+      root.classList.remove('light');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   useEffect(() => {
     if (showContent) {
@@ -32,7 +47,7 @@ const App = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <Navbar />
+          <Navbar theme={theme} toggleTheme={toggleTheme} />
           <Hero />
 
           {showDelayed && (

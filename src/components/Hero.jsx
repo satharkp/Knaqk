@@ -14,10 +14,10 @@ const Hero = () => {
     <section
       id="home"
       ref={targetRef}
-      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--color-brand-dark)]"
+      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--color-bg-primary)] transition-colors duration-500"
     >
       {/* Background Texture/Noise could go here */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,159,28,0.05)_0%,rgba(5,5,5,1)_70%)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,159,28,0.05)_0%,var(--color-bg-primary)_70%)] pointer-events-none"></div>
 
       <motion.div
         style={{ opacity, scale }}
@@ -35,7 +35,7 @@ const Hero = () => {
 
         {/* Staggered Text Reveal */}
         <motion.h1
-          className="text-5xl md:text-8xl font-brand font-bold text-white tracking-tighter mb-4 mix-blend-screen"
+          className="text-5xl md:text-8xl font-brand font-bold text-[var(--color-text-primary)] tracking-tighter mb-4 mix-blend-difference"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
@@ -44,7 +44,7 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl text-gray-400 font-inter tracking-[0.2em] uppercase"
+          className="text-xl md:text-2xl text-[var(--color-text-secondary)] font-inter tracking-[0.2em] uppercase"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
