@@ -1,6 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+:root {
   --color-brand-orange: #FF9F1C;
   --color-brand-dark: #050505;
   --color-brand-light: #F5F5F5;
@@ -13,36 +15,37 @@
 
   --font-brand: 'MuseoModerno', sans-serif;
   --font-inter: 'Inter', sans-serif;
+}
 
-  @keyframes flicker {
+@keyframes flicker {
 
-    0%,
-    100% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0.8;
-    }
-
-    52% {
-      opacity: 0.2;
-    }
-
-    54% {
-      opacity: 0.8;
-    }
-
-    56% {
-      opacity: 0.1;
-    }
-
-    58% {
-      opacity: 1;
-    }
+  0%,
+  100% {
+    opacity: 1;
   }
 
-  --animate-flicker: flicker 4s infinite;
+  50% {
+    opacity: 0.8;
+  }
+
+  52% {
+    opacity: 0.2;
+  }
+
+  54% {
+    opacity: 0.8;
+  }
+
+  56% {
+    opacity: 0.1;
+  }
+
+  58% {
+    opacity: 1;
+  }
+}
+
+--animate-flicker: flicker 4s infinite;
 }
 
 .light {
