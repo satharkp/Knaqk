@@ -48,9 +48,9 @@ const SparkField = () => {
 const Hero = () => {
   const targetRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start end", "end start"] });
-  const scrollOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const scrollScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.9]);
+  const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end start"] });
+  const scrollOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scrollScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
 
   return (
     <section

@@ -60,6 +60,10 @@
 }
 
 @layer base {
+  #root {
+    position: relative;
+  }
+
   html {
     scroll-behavior: smooth;
   }
