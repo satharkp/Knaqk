@@ -76,7 +76,7 @@ const Hero = () => {
 
         {/* Staggered Text Reveal */}
         <motion.h1
-          className="text-5xl md:text-9xl font-brand font-bold text-[var(--color-text-primary)] tracking-tighter mb-4 mix-blend-difference"
+          className="text-5xl md:text-9xl font-brand font-bold text-[var(--color-text-primary)] tracking-tighter mb-4"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
@@ -94,7 +94,7 @@ const Hero = () => {
         </motion.p>
 
         <motion.div
-          className="max-w-2xl text-gray-400 font-inter text-lg leading-relaxed mb-12"
+          className="max-w-2xl text-[var(--color-text-secondary)] font-inter text-lg leading-relaxed mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 1 }}
@@ -122,7 +122,7 @@ const Hero = () => {
               <span className="text-[var(--color-brand-orange)] text-2xl font-bold">100+</span>
               <span>Projects</span>
             </div>
-            <div className="flex flex-col items-center border-l border-white/10 pl-8">
+            <div className="flex flex-col items-center border-l border-[var(--color-border-primary)] pl-8">
               <span className="text-[var(--color-brand-orange)] text-2xl font-bold">15+</span>
               <span>Experts</span>
             </div>
