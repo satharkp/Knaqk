@@ -1,7 +1,7 @@
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-const LightSwitch = ({ toggleTheme, theme }) => {
+const LightSwitch = ({ toggleTheme, theme, className }) => {
   const controls = useAnimation();
   const [isPulling, setIsPulling] = useState(false);
 
@@ -18,9 +18,10 @@ const LightSwitch = ({ toggleTheme, theme }) => {
   };
 
   return (
-    <div className="fixed top-0 right-10 md:right-20 z-[60] flex flex-col items-center pointer-events-none">
+    <div className={`z-[60] flex flex-col items-center pointer-events-none ${className}`}>
       {/* The Stick/Base at the top */}
       <div className="w-1 h-3 bg-[var(--color-text-secondary)] rounded-b-full opacity-40" />
+
 
       {/* The Wire & Handle */}
       <motion.div
@@ -49,9 +50,9 @@ const LightSwitch = ({ toggleTheme, theme }) => {
         <div
           className={`mt-2 w-1 h-1 rounded-full transition-all duration-700
           ${theme === 'light'
-            ? 'bg-[var(--color-brand-orange)] shadow-[0_0_6px_var(--color-brand-orange)] opacity-80'
-            : 'bg-transparent'}`}
-         />
+              ? 'bg-[var(--color-brand-orange)] shadow-[0_0_6px_var(--color-brand-orange)] opacity-80'
+              : 'bg-transparent'}`}
+        />
       </motion.div>
     </div>
   );

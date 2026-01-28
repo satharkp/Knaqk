@@ -5,7 +5,7 @@ const GlowingQ = ({ className }) => {
     <div className={`relative flex items-center justify-center ${className}`}>
       {/* The Glow Effect Background */}
       <motion.div
-        className="absolute inset-0 bg-[var(--color-brand-orange)] rounded-full blur-[80px]"
+        className="absolute inset-0 bg-[var(--color-brand-orange)] rounded-full blur-[60px]"
         initial={{ opacity: 0 }}
         animate={{
           opacity: [0.15, 0.25, 0.15],
@@ -25,7 +25,11 @@ const GlowingQ = ({ className }) => {
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="relative z-10 drop-shadow-[0_0_25px_rgba(255,159,28,0.6)]"
+        className="
+          relative z-10
+          drop-shadow-[0_0_20px_rgba(0,0,0,0.25)]
+          dark:drop-shadow-[0_0_25px_rgba(255,159,28,0.6)]
+        "
       >
         <defs>
           <radialGradient id="bulb-glow" cx="0.5" cy="0.5" r="0.5">
@@ -51,6 +55,7 @@ const GlowingQ = ({ className }) => {
           stroke="var(--color-brand-orange)"
           strokeWidth="2.2"
           strokeLinecap="round"
+          strokeOpacity="0.9"
           fill="transparent"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 1 }}

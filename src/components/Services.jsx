@@ -72,7 +72,16 @@ const Services = () => {
                 {service.description}
               </p>
 
-              <button className="mt-8 px-6 py-2 border border-white/20 rounded-full text-sm font-syne hover:bg-[var(--color-brand-orange)] hover:border-transparent hover:text-black transition-all">
+              <button
+                className="
+  mt-6 md:mt-8 px-6 py-2 rounded-full text-sm font-syne transition-all
+  border-2 border-[var(--color-brand-orange)]
+  text-[var(--color-brand-orange)]
+  bg-transparent
+  hover:bg-[var(--color-brand-orange)]
+  hover:text-black
+"
+              >
                 Learn More
               </button>
             </div>

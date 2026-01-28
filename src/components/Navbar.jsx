@@ -15,6 +15,18 @@ const Navbar = ({ theme, toggleTheme }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const navLinks = [
     { name: 'Home', href: '#' },
     { name: 'Services', href: '#services' },
@@ -25,7 +37,6 @@ const Navbar = ({ theme, toggleTheme }) => {
 
   return (
     <>
-      <LightSwitch theme={theme} toggleTheme={toggleTheme} />
       <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[var(--color-bg-primary)]/50 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
@@ -36,8 +47,27 @@ const Navbar = ({ theme, toggleTheme }) => {
             className="text-3xl font-brand font-bold tracking-wider flex items-center gap-1 cursor-pointer"
           >
             <span className="text-[var(--color-text-primary)]">KNA</span>
-            <span className="text-[var(--color-brand-orange)]">
-              Q
+            <span className="relative flex flex-col items-center">
+              <span className="text-[var(--color-brand-orange)]">
+                Q
+              </span>
+              <AnimatePresence mode="wait">
+                {!scrolled && (
+                  <motion.div
+                    key="light-switch"
+                    initial={{ opacity: 0, scale: 0.5, y: -20 }}
+                    animate={{ opacity: 1, scale: 0.9, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.5, y: -20 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="absolute top-full -mt-1"
+                  >
+                    <LightSwitch
+                      theme={theme}
+                      toggleTheme={toggleTheme}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </span>
             <span className="text-[var(--color-text-primary)]">K</span>
           </motion.div>
