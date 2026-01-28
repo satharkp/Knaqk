@@ -59,7 +59,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                     animate={{ opacity: 1, scale: 0.9, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, y: -20 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="absolute top-full -mt-1"
+                    className="absolute top-full -mt-[9px]"
                   >
                     <LightSwitch
                       theme={theme}
