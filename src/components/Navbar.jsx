@@ -44,7 +44,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl font-brand font-bold tracking-wider flex items-center gap-1 cursor-pointer"
+            className="text-2xl xs:text-3xl font-brand font-bold tracking-wider flex items-center gap-0.5 xs:gap-1 cursor-pointer"
           >
             <span className="text-[var(--color-text-primary)]">KNA</span>
             <span className="relative flex flex-col items-center">
@@ -56,10 +56,10 @@ const Navbar = ({ theme, toggleTheme }) => {
                   <motion.div
                     key="light-switch"
                     initial={{ opacity: 0, scale: 0.5, y: -20 }}
-                    animate={{ opacity: 1, scale: 0.9, y: 0 }}
+                    animate={{ opacity: 1, scale: 0.8, y: 0 }}
                     exit={{ opacity: 0, scale: 0.5, y: -20 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="absolute top-full -mt-[9px]"
+                    className="absolute top-full -mt-[7px] xs:-mt-[9px]"
                   >
                     <LightSwitch
                       theme={theme}

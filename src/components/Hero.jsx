@@ -70,13 +70,13 @@ const Hero = () => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="mb-8"
+          className="mb-6 md:mb-8"
         >
-          <GlowingQ className="w-32 h-32 md:w-48 md:h-48" />
+          <GlowingQ className="w-24 h-24 xs:w-32 xs:h-32 md:w-48 md:h-48" />
         </motion.div>
 
         <motion.h1
-          className="text-5xl md:text-9xl font-brand font-bold text-[var(--color-text-primary)] tracking-tighter mb-4"
+          className="text-4xl xs:text-5xl md:text-9xl font-brand font-bold text-[var(--color-text-primary)] tracking-tighter mb-4"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
@@ -85,7 +85,7 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-3xl text-[var(--color-text-secondary)] font-inter tracking-[0.2em] uppercase mb-8"
+          className="text-lg xs:text-xl md:text-3xl text-[var(--color-text-secondary)] font-inter tracking-[0.1em] xs:tracking-[0.2em] uppercase mb-8"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
@@ -94,7 +94,7 @@ const Hero = () => {
         </motion.p>
 
         <motion.div
-          className="max-w-2xl text-[var(--color-text-secondary)] font-inter text-lg leading-relaxed mb-12"
+          className="max-w-2xl text-[var(--color-text-secondary)] font-inter text-base xs:text-lg leading-relaxed mb-10 md:mb-12 px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 1 }}

@@ -103,7 +103,7 @@ const OpeningSequence = ({ onComplete }) => {
 
       {/* The Glowing Q Centered */}
       <div ref={qRef} className="relative z-10 flex items-center justify-center">
-        <GlowingQ className="w-32 h-32 md:w-64 md:h-64" />
+        <GlowingQ className="w-24 h-24 xs:w-32 xs:h-32 md:w-64 md:h-64" />
       </div>
     </div>
   );
