@@ -10,6 +10,7 @@ import Advertising from './pages/Advertising';
 import Branding from './pages/Branding';
 import WebDevelopment from './pages/WebDevelopment';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   const [showContent, setShowContent] = useState(false);
@@ -68,6 +69,7 @@ const App = () => {
               <Route path="/branding" element={<Branding />} />
               <Route path="/web-development" element={<WebDevelopment />} />
               <Route path="/about" element={<About />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
 
