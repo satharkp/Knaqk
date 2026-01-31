@@ -35,13 +35,28 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-brand font-bold mb-6 text-[var(--color-brand-orange)]">Follow Us</h3>
           <div className="flex gap-4 mb-8">
-            <a href="#" className="p-3 bg-[var(--color-bg-secondary)] rounded-full hover:bg-[var(--color-brand-orange)] hover:text-black transition-all">
+            <a
+              href="https://www.instagram.com/_knaqk_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-[var(--color-bg-secondary)] rounded-full hover:bg-[var(--color-brand-orange)] hover:text-black transition-all"
+            >
               <Instagram size={20} />
             </a>
-            <a href="#" className="p-3 bg-[var(--color-bg-secondary)] rounded-full hover:bg-[var(--color-brand-orange)] hover:text-black transition-all">
+            <a
+              href="https://www.linkedin.com/company/knaqk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-[var(--color-bg-secondary)] rounded-full hover:bg-[var(--color-brand-orange)] hover:text-black transition-all"
+            >
               <Linkedin size={20} />
             </a>
-            <a href="#" className="p-3 bg-[var(--color-bg-secondary)] rounded-full hover:bg-[var(--color-brand-orange)] hover:text-black transition-all">
+            <a
+              href="https://twitter.com/knaqk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-[var(--color-bg-secondary)] rounded-full hover:bg-[var(--color-brand-orange)] hover:text-black transition-all"
+            >
               <Twitter size={20} />
             </a>
           </div>
