@@ -22,11 +22,11 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-3">
               <Phone size={20} className="text-[var(--color-brand-orange)]" />
-              <span>+1 (555) 123-4567</span>
+              <span>+91 8590357616</span>
             </li>
             <li className="flex items-center gap-3">
               <Mail size={20} className="text-[var(--color-brand-orange)]" />
-              <a href="mailto:hello@knaqk.com" className="hover:text-[var(--color-text-primary)] transition-colors">hello@knaqk.com</a>
+              <a href="mailto:knaqk.co@gmail.com" className="hover:text-[var(--color-text-primary)] transition-colors">knaqk.co@gmail.com</a>
             </li>
           </ul>
         </div>
