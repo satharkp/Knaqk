@@ -1,31 +1,36 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Code, Megaphone, Target, Lightbulb } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
     title: "Web Development",
     description: "Forging digital empires with code. We build lightning-fast, responsive, and stunning websites.",
     icon: <Code size={40} />,
-    color: "#FF9F1C"
+    color: "#FF9F1C",
+    link: "/web-development"
   },
   {
     title: "Marketing",
     description: "Data-driven strategies that illuminate your brand in a crowded marketplace.",
     icon: <Target size={40} />,
-    color: "#FFD700"
+    color: "#FFD700",
+    link: "/marketing"
   },
   {
     title: "Advertising",
     description: "Creative campaigns that spark conversations and ignite consumer interest.",
     icon: <Megaphone size={40} />,
-    color: "#FFA500"
+    color: "#FFA500",
+    link: "/advertising"
   },
   {
     title: "Branding",
     description: "Crafting identities that shine. From logos to complete visual systems.",
     icon: <Lightbulb size={40} />,
-    color: "#FFC300"
+    color: "#FFC300",
+    link: "/branding"
   }
 ];
 
@@ -72,7 +77,8 @@ const Services = () => {
                 {service.description}
               </p>
 
-              <button
+              <Link
+                to={service.link}
                 className="
   mt-6 md:mt-8 px-6 py-2 rounded-full text-sm font-syne transition-all
   border-2 border-[var(--color-brand-orange)]
@@ -83,7 +89,7 @@ const Services = () => {
 "
               >
                 Learn More
-              </button>
+              </Link>
             </div>
           ))}
         </motion.div>

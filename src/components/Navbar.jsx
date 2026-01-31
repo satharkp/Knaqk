@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import LightSwitch from './LightSwitch';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,12 +30,24 @@ const Navbar = ({ theme, toggleTheme }) => {
   }, [isOpen]);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'Services', href: '#services' },
-    { name: 'Work', href: '#work' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Work', href: '/#work' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/#contact' },
   ];
+
+  const handleLinkClick = (e, href) => {
+    if (href.startsWith('/#') && location.pathname === '/') {
+      e.preventDefault();
+      const id = href.replace('/#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setIsOpen(false);
+  };
 
   return (
     <>
@@ -44,48 +58,46 @@ const Navbar = ({ theme, toggleTheme }) => {
             initial={false}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-2xl xs:text-3xl font-brand font-bold tracking-wider flex items-center gap-0.5 xs:gap-1 cursor-pointer"
+            className="text-2xl xs:text-3xl font-brand font-bold tracking-wider flex items-center gap-0.5 xs:gap-1"
           >
-            <span className="text-[var(--color-text-primary)]">KNA</span>
-            <span className="relative flex flex-col items-center">
-              <span className="text-[var(--color-brand-orange)]">
-                Q
-              </span>
-              <AnimatePresence mode="wait">
-                {!scrolled && (
-                  <motion.div
-                    key="light-switch"
-                    initial={{ opacity: 0, scale: 0.5, y: -20 }}
-                    animate={{ opacity: 1, scale: 0.8, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.5, y: -20 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="absolute top-full -mt-[7px] xs:-mt-[9px]"
-                  >
-                    <LightSwitch
-                      theme={theme}
-                      toggleTheme={toggleTheme}
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </span>
-            <span className="text-[var(--color-text-primary)]">K</span>
+            <div className="flex items-center gap-0.5 xs:gap-1">
+              <Link to="/" className="text-[var(--color-text-primary)]">KNA</Link>
+              <div className="relative flex flex-col items-center">
+                <Link to="/" className="text-[var(--color-brand-orange)]">Q</Link>
+                <AnimatePresence mode="wait">
+                  {!scrolled && (
+                    <motion.div
+                      key="light-switch"
+                      initial={{ opacity: 0, scale: 0.5, y: -20 }}
+                      animate={{ opacity: 1, scale: 0.8, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.5, y: -20 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="absolute top-full -mt-[7px] xs:-mt-[9px]"
+                    >
+                      <LightSwitch
+                        theme={theme}
+                        toggleTheme={toggleTheme}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+              <Link to="/" className="text-[var(--color-text-primary)]">K</Link>
+            </div>
           </motion.div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-8 items-center">
             {navLinks.map((link, index) => (
-              <motion.a
+              <Link
                 key={link.name}
-                href={link.href}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + index * 0.1 }}
+                to={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className="text-[var(--color-text-secondary)] hover:text-[var(--color-brand-orange)] transition-colors font-medium text-sm tracking-wide relative group"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--color-brand-orange)] transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
+              </Link>
             ))}
           </div>
 
@@ -110,17 +122,17 @@ const Navbar = ({ theme, toggleTheme }) => {
             >
               <div className="flex flex-col items-center py-8 gap-6">
                 {navLinks.map((link, index) => (
-                  <motion.a
+                  <Link
                     key={link.name}
-                    href={link.href}
+                    to={link.href}
                     className="text-2xl text-[var(--color-text-primary)] hover:text-[var(--color-brand-orange)] font-brand font-bold"
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleLinkClick(e, link.href)}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.08 }}
                   >
                     {link.name}
-                  </motion.a>
+                  </Link>
                 ))}
               </div>
             </motion.div>
