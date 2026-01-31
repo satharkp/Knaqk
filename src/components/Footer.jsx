@@ -18,7 +18,7 @@ const Footer = () => {
           <ul className="space-y-4 text-[var(--color-text-secondary)] font-inter">
             <li className="flex items-center gap-3">
               <MapPin size={20} className="text-[var(--color-brand-orange)]" />
-              <span>123 Idea St, Creative Hub, NY</span>
+              <span>Kerala, India</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={20} className="text-[var(--color-brand-orange)]" />
