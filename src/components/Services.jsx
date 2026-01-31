@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Code, Megaphone, Target, Lightbulb } from 'lucide-react';
+import { Code, Megaphone, Target, Lightbulb, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const services = [
@@ -51,7 +51,23 @@ const Services = () => {
         {/* Section Title */}
         <div className="absolute top-6 left-0 right-0 px-6 md:top-10 md:left-10 z-10">
           <h2 className="text-3xl xs:text-4xl md:text-6xl font-brand font-bold text-[var(--color-text-primary)] mb-2">Our Services</h2>
-          <div className="w-16 xs:w-20 h-1 bg-[var(--color-brand-orange)]"></div>
+          <div className="flex items-center gap-4">
+            <div className="w-16 xs:w-20 h-1 bg-[var(--color-brand-orange)]"></div>
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="flex items-center gap-2 text-[var(--color-brand-orange)] font-brand font-medium text-sm md:text-base whitespace-nowrap"
+            >
+              <span>Scroll down to explore</span>
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ChevronDown size={20} />
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
 
         <motion.div style={{ x }} className="relative flex gap-6 md:gap-10 px-6 md:px-20">

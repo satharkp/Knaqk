@@ -65,7 +65,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               <div className="relative flex flex-col items-center">
                 <Link to="/" className="text-[var(--color-brand-orange)]">Q</Link>
                 <AnimatePresence mode="wait">
-                  {!scrolled && (
+                  {!scrolled && location.pathname === '/' && (
                     <motion.div
                       key="light-switch"
                       initial={{ opacity: 0, scale: 0.5, y: -20 }}
