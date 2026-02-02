@@ -29,15 +29,25 @@ const App = () => {
   }, [theme]);
 
   // Scroll to top or to hash on route change
+  // Scroll to top or to hash on route change
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+
+      const attemptScroll = (attempts = 0) => {
+        const element = document.getElementById(id);
+        if (element) {
+          // Add a small delay to ensure layout is stable
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        } else if (attempts < 20) {
+          // Retry every 100ms for up to 2 seconds
+          setTimeout(() => attemptScroll(attempts + 1), 100);
+        }
+      };
+
+      attemptScroll();
     } else {
       window.scrollTo(0, 0);
     }
