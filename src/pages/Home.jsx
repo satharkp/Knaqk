@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
+import Process from '../components/Process';
 import ContactForm from '../components/ContactForm';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
@@ -18,6 +19,7 @@ const Home = () => {
         className="relative"
       >
         <Services />
+        <Process />
 
         <section id="work" className="py-16 md:py-20 flex flex-col items-center justify-center bg-[var(--color-bg-secondary)] border-t border-[var(--color-border-primary)]">
           <h2 className="text-3xl xs:text-4xl md:text-6xl font-brand font-bold text-[var(--color-text-primary)] mb-8">Selected Work</h2>

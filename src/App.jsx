@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import OpeningSequence from './components/OpeningSequence';
+import ScrollProgress from './components/ScrollProgress';
+import CustomCursor from './components/CustomCursor';
 import Home from './pages/Home';
 import Marketing from './pages/Marketing';
 import Advertising from './pages/Advertising';
@@ -48,6 +50,9 @@ const App = () => {
 
   return (
     <div className="relative bg-[var(--color-brand-dark)] min-h-screen text-white font-inter selection:bg-[var(--color-brand-orange)] selection:text-black">
+      <CustomCursor />
+      <ScrollProgress />
+
       {!showContent && (
         <OpeningSequence onComplete={() => setShowContent(true)} />
       )}
@@ -62,15 +67,17 @@ const App = () => {
           <Navbar theme={theme} toggleTheme={toggleTheme} />
 
           <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/marketing" element={<Marketing />} />
-              <Route path="/advertising" element={<Advertising />} />
-              <Route path="/branding" element={<Branding />} />
-              <Route path="/web-development" element={<WebDevelopment />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+                <Route path="/marketing" element={<PageWrapper><Marketing /></PageWrapper>} />
+                <Route path="/advertising" element={<PageWrapper><Advertising /></PageWrapper>} />
+                <Route path="/branding" element={<PageWrapper><Branding /></PageWrapper>} />
+                <Route path="/web-development" element={<PageWrapper><WebDevelopment /></PageWrapper>} />
+                <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
+                <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
+              </Routes>
+            </AnimatePresence>
           </main>
 
           <Footer />
@@ -79,5 +86,16 @@ const App = () => {
     </div>
   );
 };
+
+const PageWrapper = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+  >
+    {children}
+  </motion.div>
+);
 
 export default App;
