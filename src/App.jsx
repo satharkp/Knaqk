@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import OpeningSequence from './components/OpeningSequence';
 import ScrollProgress from './components/ScrollProgress';
-import CustomCursor from './components/CustomCursor';
 import Home from './pages/Home';
 import Marketing from './pages/Marketing';
 import Advertising from './pages/Advertising';
@@ -50,7 +49,6 @@ const App = () => {
 
   return (
     <div className="relative bg-[var(--color-brand-dark)] min-h-screen text-white font-inter selection:bg-[var(--color-brand-orange)] selection:text-black">
-      <CustomCursor />
       <ScrollProgress />
 
       {!showContent && (
