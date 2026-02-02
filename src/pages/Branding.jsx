@@ -1,8 +1,54 @@
 import { motion } from 'framer-motion';
 import { Lightbulb, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Pricing from '../components/Pricing';
 
 const Branding = () => {
+  const plans = [
+    {
+      name: "Identity",
+      price: "$499",
+      period: "/package",
+      description: "Essential branding for startups and individuals looking to make a mark.",
+      features: [
+        "Primary Logo Design",
+        "Color Palette",
+        "Typography Selection",
+        "Social Media Kit",
+        "1 Round of Revisions"
+      ]
+    },
+    {
+      name: "Standard",
+      price: "$1,299",
+      period: "/package",
+      description: "A complete visual identity system for growing businesses.",
+      popular: true,
+      features: [
+        "Primary & Secondary Logos",
+        "Brand Style Guide",
+        "Stationery Design",
+        "Iconography Set",
+        "Brand Voice Definition",
+        "3 Rounds of Revisions"
+      ]
+    },
+    {
+      name: "Elite",
+      price: "$2,999",
+      period: "/package",
+      description: "Total brand overhaul including market positioning and strategy.",
+      features: [
+        "Comprehensive Brand Audit",
+        "Global Strategy & Positioning",
+        "Full Visual Ecosystem",
+        "Marketing Collateral",
+        "Priority Support",
+        "Unlimited Revisions"
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[var(--color-bg-primary)] pt-32 pb-20 px-6">
       <div className="container mx-auto max-w-4xl">
@@ -59,6 +105,8 @@ const Branding = () => {
               </div>
             </div>
           </section>
+
+          <Pricing plans={plans} />
 
           <div className="mt-16 flex justify-center">
             <Link to="/#contact" className="px-10 py-4 bg-[var(--color-brand-orange)] text-black font-brand font-bold text-xl rounded-full hover:bg-white hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,159,28,0.3)]">

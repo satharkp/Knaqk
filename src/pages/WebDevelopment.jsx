@@ -1,8 +1,54 @@
 import { motion } from 'framer-motion';
 import { Code, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Pricing from '../components/Pricing';
 
 const WebDevelopment = () => {
+  const plans = [
+    {
+      name: "Starter",
+      price: "$999",
+      period: "/project",
+      description: "Perfect for personal brands and small landing pages that need a professional presence.",
+      features: [
+        "Single Page React Site",
+        "Mobile Responsive Design",
+        "Basic SEO Optimization",
+        "Contact Form Integration",
+        "1 Round of Revisions"
+      ]
+    },
+    {
+      name: "Business",
+      price: "$2,499",
+      period: "/project",
+      description: "Comprehensive solution for growing businesses requiring multi-page functionality.",
+      popular: true,
+      features: [
+        "Up to 5 Pages",
+        "Custom UI/UX Design",
+        "Advanced Animations",
+        "CMS Integration (Sanity/Contentful)",
+        "Performance Optimization",
+        "3 Rounds of Revisions"
+      ]
+    },
+    {
+      name: "Enterprise",
+      price: "$4,999",
+      period: "/project",
+      description: "Full-scale custom web applications with complex logic and integrations.",
+      features: [
+        "Unlimited Pages",
+        "Custom Backend Integration",
+        "API Developments",
+        "E-commerce Functionality",
+        "Priority Support",
+        "Unlimited Revisions"
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-[var(--color-bg-primary)] pt-32 pb-20 px-6">
       <div className="container mx-auto max-w-4xl">
@@ -59,6 +105,8 @@ const WebDevelopment = () => {
               </div>
             </div>
           </section>
+
+          <Pricing plans={plans} />
 
           <div className="mt-16 flex justify-center">
             <Link to="/#contact" className="px-10 py-4 bg-[var(--color-brand-orange)] text-black font-brand font-bold text-xl rounded-full hover:bg-white hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,159,28,0.3)]">

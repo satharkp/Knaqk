@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import ContactForm from '../components/ContactForm';
+import Testimonials from '../components/Testimonials';
+import FAQ from '../components/FAQ';
 
 const Home = () => {
   return (
@@ -23,6 +25,9 @@ const Home = () => {
             <h2 className="text-2xl xs:text-4xl font-brand text-gray-500 italic text-center px-4">More Work Coming Soon...</h2>
           </div>
         </section>
+
+        <Testimonials />
+        <FAQ />
 
         <section id="about" className="py-16 md:py-20 px-6 bg-[var(--color-bg-primary)] border-t border-[var(--color-border-primary)]">
           <div className="container mx-auto max-w-4xl">
