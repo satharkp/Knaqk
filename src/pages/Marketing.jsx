@@ -1,53 +1,10 @@
 import { motion } from 'framer-motion';
 import { Target, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Pricing from '../components/Pricing';
+
 
 const Marketing = () => {
-  const plans = [
-    {
-      name: "Social",
-      price: "$799",
-      period: "/month",
-      description: "Focus on building your social presence and engaging with your audience.",
-      features: [
-        "3 Platforms Managed",
-        "12 Monthly Posts",
-        "Community Engagement",
-        "Monthly Growth Report",
-        "Basic Ad Management"
-      ]
-    },
-    {
-      name: "Growth",
-      price: "$1,999",
-      period: "/month",
-      description: "Accelerate your business growth with data-driven strategies and content.",
-      popular: true,
-      features: [
-        "All Platforms Managed",
-        "Daily Content Creation",
-        "SEO Content Strategy",
-        "Email Marketing Campaigns",
-        "Advanced Analytics",
-        "Bi-weekly Strategy Calls"
-      ]
-    },
-    {
-      name: "Dominance",
-      price: "$4,499",
-      period: "/month",
-      description: "A complete marketing partnership for industry leaders.",
-      features: [
-        "Full Marketing Outsourcing",
-        "PPC & Paid Media Strategy",
-        "Influencer Outreach",
-        "PR & Media Relations",
-        "Brand Narrative Strategy",
-        "Daily Performance Monitoring"
-      ]
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-[var(--color-bg-primary)] pt-32 pb-20 px-6">
@@ -106,7 +63,7 @@ const Marketing = () => {
             </div>
           </section>
 
-          <Pricing plans={plans} />
+
 
           <div className="mt-16 flex justify-center">
             <Link to="/#contact" className="px-10 py-4 bg-[var(--color-brand-orange)] text-black font-brand font-bold text-xl rounded-full hover:bg-white hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,159,28,0.3)]">
